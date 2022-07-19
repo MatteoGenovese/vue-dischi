@@ -1,9 +1,6 @@
 <template>
   <main>
-    <div class="container">
       <CardList />
-    </div>
-
   </main>
 </template>
 
