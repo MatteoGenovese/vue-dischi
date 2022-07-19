@@ -1,22 +1,30 @@
 <template>
-  <div>
+  
     <div class="card">
       <div class="img-container">
-        <img src="https://i.discogs.com/psDUUalbwHXuzNS7QgK93aG6ImE4JzALnOkCPtB1HVw/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNDY5/NTMtMTQ0ODkyNzA4/Ni02NTkwLmpwZWc.jpeg" alt="">
+        <img src="https://img.discogs.com/vknPDdrqRbT92pNRX0W4I5N91jg=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1246953-1448927086-6590.jpeg.jpg" alt="">
+
       </div>
-      <h2>TITOLO ALBUM</h2>
+      <h2>{{card.year}}</h2>
       <h3>
-        Artista
+
+        <!-- {{card.author}}
         <br>
-        Anno
+        {{card.year}} -->
+
       </h3>
     </div>
-  </div>
+  
 </template>
 
 <script>
+
+
 export default {
   name: 'Card',
+  props: [
+    'card'
+    ],
 }
 </script>
 
