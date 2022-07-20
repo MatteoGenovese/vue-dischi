@@ -22,11 +22,8 @@ export default {
   props: {
 
     card:{
-      poster : String,
-      title : String,
-      author : String,
-      genre : String,
-      year : String,
+      type:Object,
+      required:true,
     },
       
   }
