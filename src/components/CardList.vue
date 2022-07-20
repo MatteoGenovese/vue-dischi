@@ -11,11 +11,8 @@
       <Card
         v-for="(card, index) in cards"
         :key="index"
-        :cPoster="card.poster"
-        :cTitle="card.title"
-        :cAuthor="card.author"
-        :cGenre="card.genre"
-        :cYear="card.year" />
+        :card="card"
+        />
     </div>
 
 
@@ -38,7 +35,7 @@ export default {
   data: function () {
     return {
       cards: [],
-      cardsFilteredByGenre:[],
+      // cardsFilteredByGenre:[],
     }
   },
   methods: {
@@ -48,16 +45,18 @@ export default {
         .then((result) => {
           console.log(result.data.response);
           this.cards = result.data.response;
+
         })
         .catch((error) => {
           console.warn(error);
         })
     },
     searchAlbum(needle){
-      cardsFilteredByGenre=this.cards.filter( (element) => {
-        console.log(element.genre, needle)
-        return element.genre == needle});
-    }
+      console.log(needle)
+    //   cardsFilteredByGenre = this.cards.filter( (element) => {
+    //     console.log(element.genre, needle)
+    //     return element.genre == needle});
+}
   }
   ,
   created() {

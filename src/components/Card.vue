@@ -2,15 +2,13 @@
   
     <div class="card">
       <div class="img-container">
-        <img :src="cPoster" alt="">
-
+        <img :src="card.poster" alt="">
       </div>
-      <h2>{{cTitle}}</h2>
+      <h2>{{card.title}}</h2>
       <h3>
-        {{cAuthor}}
+        {{card.author}}
         <br>
-        {{cYear}} 
-
+        {{card.year}} 
       </h3>
     </div>
   
@@ -22,11 +20,15 @@
 export default {
   name: 'Card',
   props: {
-      cPoster : String,
-      cTitle : String,
-      cAuthor : String,
-      cGenre : String,
-      cYear : String,
+
+    card:{
+      poster : String,
+      title : String,
+      author : String,
+      genre : String,
+      year : String,
+    },
+      
   }
 }
 </script>
