@@ -1,21 +1,21 @@
 <template>
   <section>
+
     <div class="container">
-      <label for="genre">Choose genre:</label>
-      <select name="genre" id="genre">
-        <option value="" >All</option>
-        <option value="Rock" >Rock</option>
-        <option value="Pop" >Pop</option>
-        <option value="Jazz" >Jazz</option>
-        <option value="Metal" >Metal</option>
-      </select>
+      <GenreSelection @search="searchAlbum" />
     </div>
 
 
 
     <div class="container d-flex flex-wrap p-5 card-container">
-      <Card v-for="(card, index) in cards" :key="index" :cPoster="card.poster" :cTitle="card.title"
-        :cAuthor="card.author" :cGenre="card.genre" :cYear="card.year" />
+      <Card
+        v-for="(card, index) in cards"
+        :key="index"
+        :cPoster="card.poster"
+        :cTitle="card.title"
+        :cAuthor="card.author"
+        :cGenre="card.genre"
+        :cYear="card.year" />
     </div>
 
 
@@ -26,21 +26,23 @@
 
 import Card from './Card.vue';
 import axios from 'axios';
+import GenreSelection from './GenreSelection.vue';
 
 
 export default {
   name: 'CardList',
   components: {
     Card,
+    GenreSelection,
   },
   data: function () {
     return {
       cards: [],
+      cardsFilteredByGenre:[],
     }
   },
   methods: {
     getCard() {
-
 
       axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((result) => {
@@ -50,9 +52,11 @@ export default {
         .catch((error) => {
           console.warn(error);
         })
-
-
-
+    },
+    searchAlbum(needle){
+      cardsFilteredByGenre=this.cards.filter( (element) => {
+        console.log(element.genre, needle)
+        return element.genre == needle});
     }
   }
   ,
@@ -68,8 +72,6 @@ export default {
   row-gap: 14px;
   gap: 15px;
 }
-label{
-  color: white;
-}
+
 </style>
 
