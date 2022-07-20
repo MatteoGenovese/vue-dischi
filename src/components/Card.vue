@@ -2,15 +2,14 @@
   
     <div class="card">
       <div class="img-container">
-        <img src="https://img.discogs.com/vknPDdrqRbT92pNRX0W4I5N91jg=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1246953-1448927086-6590.jpeg.jpg" alt="">
+        <img :src="cPoster" alt="">
 
       </div>
-      <h2>{{card.year}}</h2>
+      <h2>{{cTitle}}</h2>
       <h3>
-
-        <!-- {{card.author}}
+        {{cAuthor}}
         <br>
-        {{card.year}} -->
+        {{cYear}} 
 
       </h3>
     </div>
@@ -22,9 +21,13 @@
 
 export default {
   name: 'Card',
-  props: [
-    'card'
-    ],
+  props: {
+      cPoster : String,
+      cTitle : String,
+      cAuthor : String,
+      cGenre : String,
+      cYear : String,
+  }
 }
 </script>
 
@@ -32,9 +35,9 @@ export default {
 <style scoped lang="scss">
 
 .card{
-  height: 300px;
+  height: 335px;
   padding: 10px;
-  width: calc( 100% / 5);
+  width: calc( ( 100% / 5 ) - 15px );
   background-color: #2E3A46;
   display: flex;
   flex-direction: column;
@@ -42,14 +45,14 @@ export default {
 
 
   .img-container{
-    width: 200px;
-    height: 200px;
+    width: 155px;
+    height: 155px;
     
     overflow: hidden;
     text-align: center;
     img{
-      width: 100%;
-      object-fit: contain;
+      height: 100%;
+      object-fit: cover;
     }
   }
   h2{

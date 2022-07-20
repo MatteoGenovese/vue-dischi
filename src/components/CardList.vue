@@ -1,10 +1,14 @@
 <template>
   <div>
 
-    <div class="container">
+    <div class="container d-flex flex-wrap p-5 card-container">
       <Card v-for="(card,index) in cards"
       :key="index"
-      :element="card"
+      :cPoster="card.poster"
+      :cTitle="card.title"
+      :cAuthor="card.author"
+      :cGenre="card.genre"
+      :cYear="card.year"
       />
     </div>
 
@@ -53,21 +57,11 @@ export default {
 
 
 <style scoped lang="scss">
-.card {
-  height: 300px;
-  width: calc(100% / 5);
-  background-color: #fff;
 
-  .img-container {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    overflow: hidden;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
+.card-container{
+  row-gap: 14px;
+  gap: 15px;
 }
+
 </style>
 
