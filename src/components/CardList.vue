@@ -9,7 +9,7 @@
 
     <div class="container d-flex flex-wrap p-5 card-container">
       <Card
-        v-for="(card, index) in cards"
+        v-for="(card, index) in cardsFiltered"
         :key="index"
         :card="card"
         />
@@ -35,7 +35,7 @@ export default {
   data: function () {
     return {
       cards: [],
-      // cardsFilteredByGenre:[],
+      cardsFiltered:[],
     }
   },
   methods: {
@@ -45,6 +45,7 @@ export default {
         .then((result) => {
           console.log(result.data.response);
           this.cards = result.data.response;
+          this.cardsFiltered = result.data.response; //
 
         })
         .catch((error) => {
@@ -52,10 +53,16 @@ export default {
         })
     },
     searchAlbum(needle){
-      console.log(needle)
-    //   cardsFilteredByGenre = this.cards.filter( (element) => {
-    //     console.log(element.genre, needle)
-    //     return element.genre == needle});
+      if (needle=='All'){
+        this.cardsFiltered = [...this.cards]
+      }
+      else{
+        console.log(needle)
+        this.cardsFiltered = this.cards.filter( (element) => {
+        console.log(element.genre, needle)
+        return element.genre == needle});
+      }
+      
 }
   }
   ,
