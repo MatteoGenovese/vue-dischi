@@ -3,12 +3,12 @@
     <div>
         <label for="genre">Choose genre:</label>
         <select name="genre" id="genre" v-model="inputSelect" @change="$emit('search', inputSelect)">
-            <option value="All">All</option>
-            <option value="Rock">Rock</option>
-            <option value="Pop">Pop</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Metal">Metal</option>
-        </select>  
+        <option
+        v-for="(genre,index) in genreList"
+        :key="index"
+        :value="genre">{{genre}}</option>
+
+        </select>
 
     </div>
 
@@ -20,15 +20,17 @@ export default {
     data: function () {
         return {
             inputSelect: "",
-            
+
         }
-    }
-    ,
+    },
     methods: {
         prova(needle) {
             console.log(inputSelect)
         }
-    }
+    },
+    props: {
+        'genreList':Array,
+    },
 
 }
 </script>
